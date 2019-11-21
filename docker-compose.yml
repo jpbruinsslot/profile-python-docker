@@ -1,0 +1,16 @@
+version: "3"
+services:
+
+  py_spy:
+    build:
+      context: py-spy/
+    pid: "host"
+    privileged: "true"
+    volumes:
+      - .:/profiles
+
+  app:
+    build:
+      context: app/
+    cap_add:
+      - sys_ptrace
